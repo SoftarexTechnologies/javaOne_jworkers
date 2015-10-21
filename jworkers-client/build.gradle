@@ -1,0 +1,27 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'jWorkers Test Client',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.softarex.jworkers.client.Program'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+dependencies {
+        compile project(':jworkers-common')
+        compile 'ch.qos.logback:logback-classic:1.1.2'
+        compile 'com.fasterxml.jackson.core:jackson-core:2.5.3'
+        compile 'net.greghaines:jesque:2.0.2'
+        compile 'javax.mail:javax.mail-api:1.5.3'
+        compile 'com.sun.mail:javax.mail:1.5.3'
+        compile 'org.apache.httpcomponents:httpclient:4.4.1'
+        compile 'com.relayrides:pushy:0.4.3'
+        compile 'com.notnoop.apns:apns:1.0.0.Beta6'
+        compile 'org.apache.httpcomponents:httpasyncclient:4.1'
+        compile 'org.javassist:javassist:3.19.0-GA'
+        compile 'net.greghaines:jesque:2.0.2'
+}
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'com.softarex.jworkers.client.Program'
+}

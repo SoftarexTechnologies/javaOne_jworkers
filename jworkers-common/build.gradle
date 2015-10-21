@@ -1,0 +1,11 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'jWorkers Common',
+                   'Implementation-Version': version
+    }
+}
+
+dependencies {
+    compile 'javax.validation:validation-api:1.1.0.Final'
+    compile 'net.greghaines:jesque:2.0.2'
+}
