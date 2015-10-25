@@ -1,16 +1,16 @@
 package com.softarex.jworker.demo.server;
 
+import com.softarex.jworker.core.RedisConfigBuilder;
 import com.softarex.jworker.core.worker.JWorkerFactory;
 import com.softarex.jworker.demo.workers.DemoWorker;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import net.greghaines.jesque.Config;
-import net.greghaines.jesque.ConfigBuilder;
 import net.greghaines.jesque.worker.Worker;
 import net.greghaines.jesque.worker.WorkerImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -18,13 +18,14 @@ import net.greghaines.jesque.worker.WorkerImpl;
  * @email ivan@softarex.com
  */
 public class Program {
+    private static final Logger logger = LoggerFactory.getLogger(Program.class);
+    
     /**
      * Entry point.
      * @param args 
      */
     public static void main(String[] args) {
-        // TODO: load redis parameters from properties file
-        final Config config = new ConfigBuilder().withDatabase(5).withHost("192.168.56.101").build();
+        final Config config = new RedisConfigBuilder().buildJesqueConfig();
         
         List<Class<?>> workers = new ArrayList<>();
         
@@ -46,7 +47,7 @@ public class Program {
         try {
             workerThread.join();
         } catch (Exception e) {
-            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, e);
+            logger.error("Can't join thread", e);
         }
     }
 }
