@@ -1,6 +1,7 @@
 package com.softarex.jworker.core.task;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -25,5 +26,32 @@ public abstract class BaseTask implements Serializable {
      * @throws InvalidTaskException  in case if some task configuration is not valid
      */
     public void validate() throws InvalidTaskException {
+    }
+
+    @Override
+    public String toString() {
+        return "BaseTask{" + "id=" + id + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BaseTask other = (BaseTask) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 }

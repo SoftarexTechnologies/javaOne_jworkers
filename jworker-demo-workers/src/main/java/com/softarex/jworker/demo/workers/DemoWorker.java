@@ -4,7 +4,8 @@ import com.softarex.jworker.core.annotations.JWorkerTask;
 import com.softarex.jworker.core.worker.BaseWorker;
 import com.softarex.jworker.demo.tasks.DemoTask;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Demo worker object. 
@@ -15,13 +16,20 @@ import java.util.logging.Logger;
  */
 @JWorkerTask(taskClass = DemoTask.class)
 public class DemoWorker extends BaseWorker<DemoTask> {
+    private static final Logger logger = LoggerFactory.getLogger(DemoWorker.class);
+    
     public DemoWorker(DemoTask task) {
         super(task);
     }
 
     @Override
     protected void run(DemoTask task) {
-        Logger.getLogger(DemoWorker.class.getName()).log(
-            Level.INFO, "DemoWorker: {0}", task.getMessage());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            logger.error("Sleep failed", ex);
+        }
+        
+        logger.info("DemoWorker: " + task.getMessage());
     }  
 }

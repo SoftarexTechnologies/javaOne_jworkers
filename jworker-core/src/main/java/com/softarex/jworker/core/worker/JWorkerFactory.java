@@ -47,7 +47,7 @@ public class JWorkerFactory extends MapBasedJobFactory {
 
         this.addJobType(taskDef.taskClass().getName(), workerClazz);
         
-        JWorkerQueue queue = (JWorkerQueue) workerClazz.getAnnotation(JWorkerQueue.class);
+        JWorkerQueue queue = (JWorkerQueue) taskDef.taskClass().getAnnotation(JWorkerQueue.class);
         if (queue != null) {
             this.queues.add(queue.value());
         } else {

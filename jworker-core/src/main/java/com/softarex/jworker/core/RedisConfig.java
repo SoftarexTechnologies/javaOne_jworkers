@@ -16,14 +16,18 @@ import org.slf4j.LoggerFactory;
  * @email ivan@softarex.com
  */
 public class RedisConfig {
-    public static final String REDISDATABASE_PARAM = "redis.database";
-    public static final String REDISPORT_PARAM     = "redis.port";
-    public static final String REDISHOST_PARAM     = "redis.host";
-    public static final String REDISPROPERTIES     = "redis.properties";
+    public static final String REDISDATABASE_PARAM    = "redis.database";
+    public static final String REDISPORT_PARAM        = "redis.port";
+    public static final String REDISHOST_PARAM        = "redis.host";
+    public static final String REDISPWD_PARAM         = "redis.password";
+    public static final String WORKERSPOOL_SIZE_PARAM = "workers.poolsize";
+    public static final String REDISPROPERTIES        = "redis.properties";
     
     private String host="localhost";
     private int port=6379;
     private int database=5;
+    private int poolSize=1;
+    private String password;
     
     private static final Logger logger = LoggerFactory.getLogger(RedisConfig.class);
 
@@ -62,6 +66,26 @@ public class RedisConfig {
     public void setDatabase(int database) {
         this.database = database;
     }
+
+    public int getPoolSize() {
+        return poolSize;
+    }
+
+    public void setPoolSize(int poolSize) {
+        this.poolSize = poolSize;
+    }
+    
+    public boolean hasPassword() {
+        return this.password != null && !this.password.isEmpty();
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     
     public Config buildJesqueConfig() {
         return new ConfigBuilder().withDatabase(this.getDatabase())
@@ -74,6 +98,8 @@ public class RedisConfig {
         this.host = props.getProperty(REDISHOST_PARAM, this.host);
         this.port = Integer.valueOf(props.getProperty(REDISPORT_PARAM, String.valueOf(this.port)));
         this.database = Integer.valueOf(props.getProperty(REDISDATABASE_PARAM, String.valueOf(this.database)));
+        this.password = props.getProperty(REDISPWD_PARAM, this.password);
+        this.poolSize = Integer.valueOf(props.getProperty(WORKERSPOOL_SIZE_PARAM, String.valueOf(this.poolSize)));
     }
     
     private Properties getProperties(String propertyFile) throws IOException {

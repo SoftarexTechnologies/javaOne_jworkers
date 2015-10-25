@@ -30,4 +30,8 @@ public abstract class BaseWorker<TTask extends BaseTask> implements Runnable {
     }
     
     protected abstract void run(TTask task);
+
+    public BaseTask getTask() {
+        return this.task;
+    }
 }
