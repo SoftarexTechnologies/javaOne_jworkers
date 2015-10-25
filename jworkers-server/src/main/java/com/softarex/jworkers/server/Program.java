@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.softarex.jworkers.server;
 
-import com.softarex.jworkers.common.client.JWorkerClient;
-import com.softarex.jworkers.common.server.BaseWorker;
-import com.softarex.jworkers.common.server.JWorkerFactory;
-import com.softarex.jworkers.common.server.annotations.JWorkerTask;
-import com.softarex.jworkers.common.task.BaseTask;
+import com.softarex.jworkers.core.annotations.JWorkerTask;
+import com.softarex.jworkers.core.client.JWorkerClient;
+import com.softarex.jworkers.core.task.BaseTask;
+import com.softarex.jworkers.core.worker.BaseWorker;
+import com.softarex.jworkers.core.worker.JWorkerFactory;
 import java.util.Arrays;
 import net.greghaines.jesque.Config;
 import net.greghaines.jesque.ConfigBuilder;

@@ -1,8 +1,8 @@
-package com.softarex.jworkers.common.server;
+package com.softarex.jworkers.core.worker;
 
-import com.softarex.jworkers.common.server.annotations.JWorkerQueue;
-import com.softarex.jworkers.common.server.annotations.JWorkerTask;
-import com.softarex.jworkers.common.task.BaseTask;
+import com.softarex.jworkers.core.annotations.JWorkerQueue;
+import com.softarex.jworkers.core.annotations.JWorkerTask;
+import com.softarex.jworkers.core.task.BaseTask;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;

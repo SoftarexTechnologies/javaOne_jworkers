@@ -1,7 +1,7 @@
-package com.softarex.jworkers.common.client;
+package com.softarex.jworkers.core.client;
 
-import com.softarex.jworkers.common.server.annotations.JWorkerQueue;
-import com.softarex.jworkers.common.task.BaseTask;
+import com.softarex.jworkers.core.annotations.JWorkerQueue;
+import com.softarex.jworkers.core.task.BaseTask;
 import java.util.concurrent.TimeUnit;
 import net.greghaines.jesque.Config;
 import net.greghaines.jesque.Job;

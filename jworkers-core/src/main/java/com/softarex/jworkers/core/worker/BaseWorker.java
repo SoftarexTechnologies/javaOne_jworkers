@@ -1,7 +1,6 @@
-package com.softarex.jworkers.common.server;
+package com.softarex.jworkers.core.worker;
 
-import com.softarex.jworkers.common.task.BaseTask;
-import com.softarex.jworkers.common.task.BaseTask;
+import com.softarex.jworkers.core.task.BaseTask;
 
 /**
  *

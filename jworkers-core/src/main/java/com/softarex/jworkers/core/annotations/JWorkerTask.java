@@ -1,4 +1,4 @@
-package com.softarex.jworkers.common.server.annotations;
+package com.softarex.jworkers.core.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

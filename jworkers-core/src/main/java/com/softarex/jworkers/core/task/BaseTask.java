@@ -1,4 +1,4 @@
-package com.softarex.jworkers.common.task;
+package com.softarex.jworkers.core.task;
 
 import java.io.Serializable;
 

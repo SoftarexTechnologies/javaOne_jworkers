@@ -1,7 +1,5 @@
 package com.softarex.jworkers.client;
 
-
-
 /**
  *
  * @author Ivan
