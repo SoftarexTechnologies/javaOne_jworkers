@@ -1,0 +1,10 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'jWorker Demo Tasks',
+                   'Implementation-Version': version
+    }
+}
+
+dependencies {
+    compile project(':jworker-core')
+}

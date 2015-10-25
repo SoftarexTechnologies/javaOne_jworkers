@@ -1,4 +1,4 @@
-# jworkers
+# jworker demo
 Demo project for organizing background tasks scheduling based on Redis and jesque library
 
 ## Development environment requirements 

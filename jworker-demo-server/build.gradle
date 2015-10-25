@@ -1,0 +1,19 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'jWorker Demo Server',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.softarex.jworker.demo.server.Program'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+dependencies {
+        compile project(':jworker-core')
+        compile project(':jworker-demo-workers')
+        compile 'com.fasterxml.jackson.core:jackson-core:2.5.3'
+        compile 'net.greghaines:jesque:2.0.2'
+}
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'com.softarex.jworker.demo.server.Program'
+}

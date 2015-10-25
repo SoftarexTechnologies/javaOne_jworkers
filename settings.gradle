@@ -1,1 +1,1 @@
-include ":jworkers-core", ":jworkers-tasks", ":jworkers-server", ':jworkers-client'
+include ":jworker-core", ":jworker-demo-tasks", ":jworker-demo-workers", ":jworker-demo-server", ':jworker-demo-client'
