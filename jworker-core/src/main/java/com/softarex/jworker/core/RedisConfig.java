@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  * @author Ivan Dubynets
  * @email ivan@softarex.com
  */
-public class RedisConfigBuilder {
+public class RedisConfig {
     public static final String REDISDATABASE_PARAM = "redis.database";
     public static final String REDISPORT_PARAM     = "redis.port";
     public static final String REDISHOST_PARAM     = "redis.host";
@@ -25,13 +25,13 @@ public class RedisConfigBuilder {
     private int port=6379;
     private int database=5;
     
-    private static final Logger logger = LoggerFactory.getLogger(RedisConfigBuilder.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedisConfig.class);
 
-    public RedisConfigBuilder(String propertyFile) throws IOException {
+    public RedisConfig(String propertyFile) throws IOException {
         loadProperties(propertyFile);
     }
 
-    public RedisConfigBuilder() {
+    public RedisConfig() {
         try {
             this.loadProperties(null);
         } catch (IOException ex) {

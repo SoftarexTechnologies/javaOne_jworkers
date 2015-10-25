@@ -1,6 +1,6 @@
 package com.softarex.jworker.demo.server;
 
-import com.softarex.jworker.core.RedisConfigBuilder;
+import com.softarex.jworker.core.RedisConfig;
 import com.softarex.jworker.core.worker.JWorkerFactory;
 import com.softarex.jworker.demo.workers.DemoWorker;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class Program {
      * @param args 
      */
     public static void main(String[] args) {
-        final Config config = new RedisConfigBuilder().buildJesqueConfig();
+        final Config config = new RedisConfig().buildJesqueConfig();
         
         List<Class<?>> workers = new ArrayList<>();
         

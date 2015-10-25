@@ -1,6 +1,6 @@
 package com.softarex.jworker.demo.client;
 
-import com.softarex.jworker.core.RedisConfigBuilder;
+import com.softarex.jworker.core.RedisConfig;
 import com.softarex.jworker.core.client.JWorkerClient;
 import com.softarex.jworker.demo.tasks.DemoTask;
 import net.greghaines.jesque.Config;
@@ -14,7 +14,7 @@ import net.greghaines.jesque.Config;
 public class Program {
 
     public static void main(String[] args) {
-        final Config config = new RedisConfigBuilder().buildJesqueConfig();
+        final Config config = new RedisConfig().buildJesqueConfig();
         
         final JWorkerClient client = new JWorkerClient(config);
         

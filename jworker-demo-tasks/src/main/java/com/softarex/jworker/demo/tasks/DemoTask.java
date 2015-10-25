@@ -1,6 +1,8 @@
 package com.softarex.jworker.demo.tasks;
 
+import com.softarex.jworker.core.annotations.JWorkerQueue;
 import com.softarex.jworker.core.task.BaseTask;
+import java.util.UUID;
 
 /**
  * Demo task for the DemoWorker.
@@ -8,6 +10,7 @@ import com.softarex.jworker.core.task.BaseTask;
  * @author Ivan Dubynets
  * @email ivan@softarex.com
  */
+@JWorkerQueue("demo")
 public class DemoTask extends BaseTask {
     private String message;
 
