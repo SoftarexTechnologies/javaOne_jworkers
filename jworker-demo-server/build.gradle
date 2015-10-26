@@ -26,8 +26,9 @@ if (!hasProperty('mainClass')) {
 
 if (!file('src/main/resources/redis.properties').exists()) {
     copy {
-      from("src/main/resources/")
-      into("src/main/resources/")
-      rename('redis.properties.tpl', 'redis.properties')
+        include("*.*.tpl")
+        from("src/main/resources/")
+        into("src/main/resources/")
+        rename('redis.properties.tpl', 'redis.properties')
     }
 }
