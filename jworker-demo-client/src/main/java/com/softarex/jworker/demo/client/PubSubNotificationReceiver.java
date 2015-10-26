@@ -5,8 +5,6 @@ import com.softarex.jworker.core.RedisConfig;
 import com.softarex.jworker.core.notifications.Notification;
 import com.softarex.jworker.core.notifications.NotificationReceiver;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;

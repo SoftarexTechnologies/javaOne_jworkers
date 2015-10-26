@@ -26,7 +26,7 @@ public class PubSubNotificationSender implements NotificationSender {
     }
 
     @Override
-    public void sendNotification(Notification notification) throws Exception {
+    public synchronized void sendNotification(Notification notification) throws Exception {
         this.checkState();
         String message = this.objectMapper.writeValueAsString(notification);
         this.jedis.publish(CHANNEL_NAME, message);
@@ -44,7 +44,7 @@ public class PubSubNotificationSender implements NotificationSender {
     
     private void checkState() {
         if (this.jedis == null) {
-            throw new IllegalStateException("is not initialized yet");
+            throw new IllegalStateException("is not initializeId yet");
         }
     }
 }

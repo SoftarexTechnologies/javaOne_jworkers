@@ -2,7 +2,6 @@ package com.softarex.jworker.demo.tasks;
 
 import com.softarex.jworker.core.annotations.JWorkerQueue;
 import com.softarex.jworker.core.task.BaseTask;
-import java.util.UUID;
 
 /**
  * Demo task for the DemoWorker.
