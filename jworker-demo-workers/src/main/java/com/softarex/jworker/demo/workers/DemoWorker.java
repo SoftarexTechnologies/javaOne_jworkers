@@ -3,7 +3,6 @@ package com.softarex.jworker.demo.workers;
 import com.softarex.jworker.core.annotations.JWorkerTask;
 import com.softarex.jworker.core.worker.BaseWorker;
 import com.softarex.jworker.demo.tasks.DemoTask;
-import java.util.logging.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

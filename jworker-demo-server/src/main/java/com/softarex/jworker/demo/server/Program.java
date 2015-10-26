@@ -11,11 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 import net.greghaines.jesque.Config;
-import net.greghaines.jesque.Job;
 import net.greghaines.jesque.worker.Worker;
 import net.greghaines.jesque.worker.WorkerEvent;
 import net.greghaines.jesque.worker.WorkerImpl;
-import net.greghaines.jesque.worker.WorkerListener;
 import net.greghaines.jesque.worker.WorkerPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +38,7 @@ public class Program {
         notificationsBroker.init();
         
         List<Class<?>> workers = new ArrayList<>();
-        workers.add(DemoWorker.class);
-        // TODO: add your workers here
+        initWorkersList(workers);
         
         final JWorkerFactory workersFactory = new JWorkerFactory(workers);
         final WorkerPool workerPool = new WorkerPool(new Callable<Worker>() {
@@ -75,5 +72,11 @@ public class Program {
         }, WorkerEvent.JOB_SUCCESS);
         
         workerPool.run();
+    }
+
+    private static void initWorkersList(List<Class<?>> workers) {
+        workers.add(DemoWorker.class);
+        // TODO: add your workers here
+        
     }
 }
