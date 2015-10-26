@@ -3,6 +3,7 @@ package com.softarex.jworker.demo.client;
 import com.softarex.jworker.core.notifications.NotificationType;
 import com.softarex.jworker.core.task.BaseTask;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
@@ -31,6 +32,7 @@ public class MainFrame extends JFrame {
     private JTextField  tfDelay;
     private JTextField  tfScheduledTasks;
     private JTextField  tfExecutedTasks;
+    private JTextField  tfDiff;
     private StartAction startAction;
     private StopAction  stopAction;
     
@@ -55,6 +57,7 @@ public class MainFrame extends JFrame {
     public void addTask(BaseTask task) {
         this.tasksTableModel.addTask(task);
         this.tfScheduledTasks.setText(String.valueOf(this.tasksTableModel.getRowCount()));
+        this.updateDifference();
     }
     
     public void updateTask(BaseTask task, NotificationType nt) {
@@ -63,6 +66,11 @@ public class MainFrame extends JFrame {
             String.valueOf(this.tasksTableModel.getExecutedTasksCount()));
         JScrollBar vertical = this.scrollPane.getVerticalScrollBar();
         vertical.setValue(vertical.getMaximum());
+        this.updateDifference();
+    }
+    
+    private void updateDifference() {
+        this.tfDiff.setText(String.valueOf(this.tasksTableModel.getRowCount() - this.tasksTableModel.getExecutedTasksCount()));
     }
     
     private void initUI() {
@@ -102,7 +110,7 @@ public class MainFrame extends JFrame {
     
     private JPanel initSummaryBlock() {
         JPanel summaryPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        summaryPanel.add(new JLabel("Scheduled:"));
+        summaryPanel.add(new JLabel("Scheduled: "));
         this.tfScheduledTasks = new JTextField("0", 4);
         this.tfScheduledTasks.setEnabled(false);
         summaryPanel.add(this.tfScheduledTasks);
@@ -111,6 +119,12 @@ public class MainFrame extends JFrame {
         this.tfExecutedTasks = new JTextField("0", 4);
         this.tfExecutedTasks.setEnabled(false);
         summaryPanel.add(this.tfExecutedTasks);
+        
+        summaryPanel.add(new JLabel("Difference: "));
+        this.tfDiff = new JTextField("0", 4);
+        this.tfDiff.setForeground(Color.RED);
+        this.tfDiff.setEnabled(false);
+        summaryPanel.add(this.tfDiff);
         
         return summaryPanel;
     }
